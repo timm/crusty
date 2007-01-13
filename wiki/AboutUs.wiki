@@ -1,11 +1,6 @@
 #summary Who's who
 
-= Introduction =
-
-Here's who we are
-
-
-= Details =
+=== Who's Who ===
 
   * MediaItoku
   * TimMenzies
