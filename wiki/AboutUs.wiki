@@ -1,6 +1,6 @@
 #summary Who's who
 
-=== Who's Who ===
+== Who's Who ==
 
   * MediaItoku
   * TimMenzies
