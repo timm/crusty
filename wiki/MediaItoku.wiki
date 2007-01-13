@@ -1,0 +1,10 @@
+Integrating open source with Second Life
+
+= Introduction =
+
+SL has partnered with open source groups to produce an open grid access client.
+
+
+= Details =
+
+That's cool.  don't you think?
