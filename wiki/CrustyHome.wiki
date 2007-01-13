@@ -1,0 +1,18 @@
+[http://www.silverbox.com/krusty/ http://www.purplemoon.com/Stickers/simpsons-crusty-seal.jpg]
+
+Of course, the name of this site has nothing to do with the loveable Simpson's character, Krusty the clown, since that would violate copyright.
+
+Here is our site map:
+
+  * CRUSTY tips
+    * CrustyInstall
+    * CrustyUninstall
+  * BashTips
+  * EditorTips
+    * WhichEditor ?
+    * VimTips
+    * NanoTips   
+    * EmacsTips
+  * ScreenTips
+  * Rss reader
+    * SnownewsTips
