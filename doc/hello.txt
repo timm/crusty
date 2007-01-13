@@ -4,6 +4,6 @@
    R.  = 'R
    U.  = Us
    S.
-   T.  = That's
+   T.  = Thank
    Y.  = You!
  -----------------
