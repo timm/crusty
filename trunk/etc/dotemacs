@@ -1,0 +1,65 @@
+(setq default-major-mode 'text-mode)
+
+(add-hook 'text-mode-hook
+          (lambda ()
+            (flyspell-mode 1)))
+
+(setq auto-mode-alist
+      (append
+       '(
+	 ("\\.pl$"  . prolog-mode)
+	 )
+       auto-mode-alist))
+
+(setq auto-mode-alist
+      (append
+       '(
+	 ("^/tmp/mutt-"  . mail-mode)
+ )
+      auto-mode-alist))
+
+(global-font-lock-mode t 1)
+
+(global-set-key [f5] 'delete-trailing-whitespace)
+(global-set-key [(meta .)]       'scroll-up)
+(global-set-key [(meta ,)]       'scroll-down)
+(global-set-key [(meta =)]       'goto-line)
+(global-set-key [(control a)]    'beginning-of-line)
+(global-set-key [(control e)]    'end-of-line)
+(global-set-key [(control d)]    'backward-delete-char)
+(global-set-key '[(meta \3)] 'split-window-horizontally)
+(global-set-key '[(meta \2)] 'split-window)
+(global-set-key '[(meta \1)] 'other-window)
+(global-set-key '[(meta \0)] 'delete-other-windows)
+
+;_H2(Backup files)
+;Its good to store these somewhere else than in the current directory.
+
+(setq backup-directory-alist nil)
+(setq backup-directory-alist
+      (cons (cons "\\.*$" (expand-file-name "~/tmp/backup"))
+	    backup-directory-alist))
+(xterm-mouse-mode t)
+(menu-bar-mode nil)
+
+;_H2(Some Misc Stuff)
+
+(display-time)
+(transient-mark-mode t)
+(line-number-mode    t)
+(setq scroll-step                1)
+(setq require-final-newline      t)
+(setq inhibit-startup-message    t)
+(setq display-time-24hr-format nil)
+
+(global-set-key [(meta .)]       'scroll-up)
+(global-set-key [(meta ,)]       'scroll-down)
+(global-set-key [(meta /)]       'goto-line)
+(global-set-key [(meta =)]       'flyspell-mode)
+(global-set-key [(control a)]    'beginning-of-line)
+(global-set-key [(control e)]    'end-of-line)
+(global-set-key [(control d)]    'backward-delete-char)
+(global-set-key [(control h)]    'backward-delete-char)
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

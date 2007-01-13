@@ -1,0 +1,4 @@
+cd ~/svns
+for i in *; do
+	(cd $i ; svn commit -m saving )
+done

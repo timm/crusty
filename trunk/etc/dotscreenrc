@@ -1,0 +1,34 @@
+# ---- Example screenrc file for creating windows and processes.
+# Create a window and use tcsh.
+
+# Create a window and use tcsh.
+escape ^zz
+# Turn off the startup message.
+startup_message off
+
+# text message
+vbell on
+vbell_msg " CLANG!!"
+
+# Set the caption to the active windows. 
+#caption always "           %?%F%? %L=%-Lw%45>%{+b by}%n%f* %t%{-}%+Lw%-0<" 
+caption always "%{= wk}%-Lw            %{= rk}%50>%n%f*%t%{-}%+Lw%<"
+
+# lets ascii mouse work in vim
+term xterm-color
+termcapinfo xterm-color|rxvt ti@:te@
+
+# hack for the backspace key
+bindkey -d -k kb stuff \010
+
+# New screens for variozus processes.
+screen -t rss  8 snownews
+screen -t web  7 w3m  news.google.com
+screen -t mail 6 mutt
+screen -t top  5 top
+screen -t mc   4 mc -a
+screen -t sh   3 bash
+screen -t sh   2 bash
+screen -t sh   1 bash
+bce
+focus

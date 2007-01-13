@@ -1,0 +1,21 @@
+export SVN_EDITOR=`which vim`
+
+PATH="$HOME/bin:$PATH"
+
+for i in ${HOME}/opt/*/*/bin 
+do
+	PATH="$i:${PATH}"
+done
+
+PATH=`echo $PATH | gawk 'BEGIN{RS=":"} 
+                         ++Seen[$1] == 1 {
+			      	Out=Out Sep $1; 
+				Sep=":"
+			     }
+			 END {print Out}'`
+export PATH="$PATH"
+
+for i in ${HOME}/opt/*/*/etc/login/*  
+do
+	[ -f $i ] && . $i
+done

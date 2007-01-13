@@ -1,0 +1,152 @@
+# ddd: demo-driven development
+# Copyright (C) 2006 Tim Menzies tim@menzies.us
+
+########################################################################
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+# 
+# You should have received a copy of the GNU Lesser General Public
+# License along with this program; if not write to the Free Software
+# Foundation Inc. 51 Franklin St Fifth Floor Boston MA  02110-1301  USA
+########################################################################
+
+#
+# This file implements "demo-driven development" (DDD) which is a
+# coarse-grained "test-driven development" (TDD) method.
+# 
+# TDD is a computer programming technique that involves writing test cases
+# first and then implementing the code necessary to pass the tests. The goal
+# of test-driven development is to achieve rapid feedback and implements
+# the "illustrate the main line" approach to constructing a program. This
+# technique is heavily emphasized in Extreme Programming.
+# 
+# Practitioners emphasize that test-driven development is primarily a
+# method of designing software, not just a method of testing. The method
+# is also used for removal of software defects.
+# 
+# A popular variant of TDD is as follows.
+# 
+# - The programmer starts by first failng  a test cases. The idea is to
+# ensure that the testcase really works and can catch an error.
+# 
+# - Once this is shown, the following "red-green-refactor" cycle  commences. 
+# 
+# 	- Red: a test fails
+# 	- Green: some code has been written, enough to pass the test.
+# 	- Refactor: after _N_ rounds of red-green, dead-code is removed and 
+# 	  the design and code are (optionally) tidies up.
+# 
+# TDD's test can be very fine grained (e.g. will an array access return the
+# right type).  When coding in bash scripts, the tests are much larger than
+# that. Often, I write "tests" as "demonstrations" to show some high-level
+# functionality. So:
+#
+# - I don't write thousands of tests; 
+# - I write dozens of demos.
+#
+# USAGE
+# -----
+#
+# Create a special  directory of examples contains executable scripts 1,2,3,...
+# If any test file _X_ produces results you like, you should cache that result  
+# in _X.want_; e.g.
+# 
+#  cd $HOME/src/someProject/eg
+#  ./1 > 1.want
+# 
+# The _X.want_ files define a regression suite and enables the red-green
+# tests used in ddd-driven development. Running _ddd_ in that directory will 
+# print each the name of each executable test file in one of three colors:
+# 
+# - Green (good!): the file _X_ runs and the output is same as _X.want_;
+# - Red (bad!): the file _X_ runs and the output is different to  _X.want_;
+# - Yellow (ok): the file _X_ runs but there is no _X.want_ file so we can't 
+# assess the output.
+# 
+# For an ascii output, use 
+#
+#       Ugly=1 ddd  
+#
+###########################################################################################
+## Config stuff
+
+ LineMax=40  # force a new line after $LineMax reports
+ Pretty=1    # default print: use pretty colors 
+
+## Command-line stuff
+
+ [ -n $1  ] && Pretty=0
+
+## Temporary file stuff
+
+ Tmps=/tmp/$$
+ trap "[ -f \"$Tmps/*\" ] && /bin/rm -rf $Tmps/*" 0 1 2 3 15
+
+## Status stuff
+
+ Reds=0
+ Greens=0
+ Yellows=0
+
+ red()    { if [ "$Pretty"="1" ];then red1  $*; else red0    $*; fi; }
+ green()  { if [ "$Pretty"="1" ];then green1 $*; else green0  $*; fi; }
+ yellow() { if [ "$Pretty"="1" ];then yellow1 $*; else yellow0 $*; fi; }
+
+ red0()    { echo  -en "$1x " ;}
+ green0()  { echo  -en "$1! " ;}
+ yellow0() { echo  -en "$1? " ;}
+
+ red1()    { echo  -en "\033[1;37m\033[41m$1\033[0m "; }
+ green1()  { echo  -en "\033[1m\033[42m$1\033[0m "; }
+ yellow1() { echo  -en "\033[1m\033[43m$1\033[0m "; }
+
+## Main stuff
+
+#- [1] For all executables files F in this directory
+#- [2] Run F and trap the output
+#- [3a] If the file F.want exists...
+#- [3b] Then compare the output to F.out
+#	- [3b1]  If the output is the same as F.want
+#	- [3b2] Hooray: its a green result 
+#	- [3b3] Boo: its a red result 
+#- [3c] Else its a yellow result
+
+ Lines=$LinesMax
+ echo -n "`pwd`: "
+ # the following line fixes a strange quirk in cygwin. I ain't
+ # proud of it but nevertheless.... 
+ for((i=0;i<=100;i++)); do
+    if [ ! -f $i ]; then continue ; fi
+    if [ -x $i ]; then   #....................................... [1]
+        stem=${i/\.*/}
+        ./$i > $Tmps.$i  #....................................... [2] 
+        if [ -f "$stem.want" ]; then #........................... [3a]
+            if diff -s $Tmps.$i $stem.want > /dev/null; then #... [3b]
+                green $i  
+                ((Greens++)) #................................... [3b1]
+            else
+                red $i 
+                ((Reds++)) #..................................... [3b2]
+            fi
+        else
+            yellow $i 
+            ((Yellows++)) #...................................... [3b3]
+        fi
+    fi
+	((Lines--));  
+    if [ $Lines = 0 ] ; then
+        printf "\n";
+        Lines=$LineMax1
+    fi
+ done
+
+## Report
+printf "summary `green $Greens``red  $Reds``yellow $Yellows`\n"
+

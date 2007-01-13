@@ -1,0 +1,9 @@
+# -*- sh -*-
+
+export TERM=xterm-color
+
+alias ls='ls -h -F'
+alias r='reset'
+
+export PS1="${USER}@${HOSTNAME}:\e[7m\w\e[27m [\!]$ "
+export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME}: `pwd`\007"'
