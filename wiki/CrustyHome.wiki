@@ -1,4 +1,5 @@
 #summary START HERE
+#labels Featured
 
 [http://www.silverbox.com/krusty/ http://img.gamespot.com/gamespot/shared/user/emblem_krusty_s.jpg]
 
