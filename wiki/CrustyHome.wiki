@@ -4,6 +4,7 @@ Of course, the name of this site has nothing to do with the loveable Simpson's c
 
 Here is our site map:
 
+  * AboutUs
   * CRUSTY tips
     * CrustyInstall
     * CrustyUninstall
