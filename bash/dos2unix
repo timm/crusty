@@ -1,0 +1,6 @@
+Tmp=`mktemp`
+for i in *
+do 
+	gawk '{sub(/\015$/,""); print $0}' $i > $Tmp
+	mv $Tmp $i
+done

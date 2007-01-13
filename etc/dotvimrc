@@ -1,0 +1,117 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" SPECIAL OPTIONS (assumes special directories/files)
+
+"edit this file
+nmap ,v :e $HOME/etc/wisp/vimrc<CR>
+"load this file
+nmap ,s :source $HOME/.vimrc<CR>
+
+""better backups
+"note: for this to work you need to manually create ~/tmp/backup
+"caution: not sure what happens when two files with same name in
+"different directories get saved.
+set backup
+set backupdir=~/tmp/backup
+
+"store swap files away from the current directory 
+set directory=~/tmp/backup
+
+"colors
+"note: for this to work you'll need to have a directory
+"      ~/.vim/colors with the selected color schemes
+"colorscheme blue
+"colorscheme darkblue
+colorscheme default
+"colorscheme delek
+"colorscheme desert
+"colorscheme elflord
+"colorscheme evening
+"colorscheme koehler
+"colorscheme morning
+"colorscheme murphy
+"colorscheme pablo
+"colorscheme peachpuff
+"colorscheme ps_color
+"colorscheme ron
+"colorscheme shine
+"colorscheme torte
+"colorscheme zellner
+
+"e.g. if you have a tags generator
+"set tags=~/.vim/tags/wisp
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" GENERAL OPTIONS (should work everywhere)
+
+"ascii mouse
+set mouse=a
+
+"place buffer name into window title
+set title
+
+"show line numbers
+set number 
+
+"simple pasting
+set paste
+
+"cycling through buffers
+map <C-n> :exe  ":buf ".((bufnr("%") % bufnr("$"))+1)<CR> 
+
+" auto-change directory to that of the current buffer
+autocmd BufEnter * cd %:p:h
+
+" Shows the matching bracket when entering expressions
+" (you'll never miss one again!)
+set showmatch
+set matchtime=15
+
+" control for file explorer
+let g:explVertical=1
+let g:explWinSize=20
+
+"pretty colors
+set background=light
+set syntax=on
+syntax enable
+
+"" Incremental search
+" (as you type in the search query, it will show you 
+" whether your query currently matches anything)
+set ignorecase
+set incsearch
+set smartcase
+
+" source code indenting
+set smarttab
+set noexpandtab 
+set tabstop=4 
+set shiftwidth=4
+
+"Maps CTRL+H (for HTML) to the command for creating HTML
+" representing the coloured text shown in the Vi window
+" Note: if 'cc9933' isn't present,colors the resulting error
+" message is suppressed by the 'e' flag of 's'ubstitute
+map ,h :runtime!  syntax/2html.vim<Enter>:%s/cc9933/cc9933/ge<Enter>:/<pre>/,/<\/pre>/ y<Enter>:w!<Enter>:q!<Enter>
+
+" Help for viminfo is at:  :he 'viminfo'
+"   '10  : marks will be remembered for up to 10 previously edited files
+"   "100 : will save up to 100 lines for each register
+"   :20  : up to 20 lines of command-line history will be remembered
+"   %    : saves and restores the buffer list
+"   n... : where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
+autocmd BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+" Clean up a text file
+function! Clean()
+ exe ':%s/\r//ge'
+ " delete pesky non-asciis
+ exe ':%s/[\x00-\x1f\x80-\xff]/ /eg '
+ " compress multiple spaces
+ exe ':%s/\s\s\+/ /eg'
+ " delete end of line spaces
+ exe ':%s/\s\+$//e'
+ " compress multiple blank lines
+ exe ':silent! v/./,/./-j'
+endfunction

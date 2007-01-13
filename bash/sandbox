@@ -1,0 +1,4 @@
+Here=`pwd`
+Tmp=`mktemp -d` 
+trap "cd; rm -rf $Tmp" 0 1 2 3 15
+cd $Tmp

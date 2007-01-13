@@ -1,0 +1,7 @@
+cd ~/svns 
+for i in *; do
+	(cd $i/ ; svn status | grep -v Thumbs.db | sed "s/^/$i:	/" | fgrep "?" | sort +2)
+done
+
+
+
