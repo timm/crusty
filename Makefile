@@ -3,6 +3,7 @@ DESTDIR = $(HOME)
 Snownews = 1.5.7
 VimOutliner = 0.3.4
 
+
 Dirs    = bin doc doc/wiki    etc etc/login lib opt opt/crusty svns tmp tmp/backup var var/log 
 AptDirs = bin doc doc/wiki eg etc etc/login lib
 VimColors = .vim/colors
