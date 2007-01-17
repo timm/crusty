@@ -1,5 +1,6 @@
 #summary World of daveman1010220
 
+January 17, 2007--
 Researching LISP today. Anyone care to recommend a good Mac OS X environment for LISP?
 
 --David
