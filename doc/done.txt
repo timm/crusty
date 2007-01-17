@@ -4,11 +4,11 @@
 
 1) Your $HOME/.bashrc needs this line:
 
-	. opt/crusty/crusty/etc/dotbashrc
+	. ~/opt/crusty/crusty/etc/dotbashrc
 
 2) Your $HOME/.bash_profile needs this line:
 
-	. opt/crusty/crusty/etc/login/dotbash_profile
+	. ~/opt/crusty/crusty/etc/dotbash_profile
 
 3) Depending on what editor you use, then...
 3a) If you use nano, Your $HOME/.nanorc file needs some lines.
