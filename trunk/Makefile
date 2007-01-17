@@ -1,8 +1,10 @@
 BIN     = /bin/sh
 DESTDIR = $(HOME)
+
 Snownews = 1.5.7
 VimOutliner = 0.3.4
 
+CRUSTY_SVN=https://crusty.googlecode.com/svn/
 
 Dirs    = bin doc doc/wiki    etc etc/login lib opt opt/crusty svns tmp tmp/backup var var/log 
 AptDirs = bin doc doc/wiki eg etc etc/login lib
@@ -31,7 +33,7 @@ dist :
 	if [ -d crustyzip ]; then rm -rf crustyzip; fi; \
 	mkdir crustyzip; \
 	cd crustyzip; 
-	svn export http://unbox.org/wisp/var/timm/crusty crusty; \
+	svn export $(CRUSTY_SVN) crusty; \
  	zip -r crusty.zip crusty; \
 	ls -lsa crusty.zip; \
 	pwd
