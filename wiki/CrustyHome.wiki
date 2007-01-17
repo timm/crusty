@@ -6,6 +6,8 @@
 Here is our site map:
 
   * AboutUs
+  * Installation
+    * DebianInstall
   * CRUSTY tips
     * CrustyInstall
     * CrustyUninstall
