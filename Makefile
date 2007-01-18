@@ -34,7 +34,7 @@ dist :
 	mkdir crustyzip; \
 	cd crustyzip; 
 	svn export $(CRUSTY_SVN) crusty; \
- 	zip -r crusty.zip crusty; \
+	zip -r crusty.zip crusty; \
 	ls -lsa crusty.zip; \
 	pwd
 
@@ -44,7 +44,7 @@ application : installdirs
 	@if   [ ! -d  $(DESTDIR)/opt/crusty/$(name) ]; \
 	then mkdir   $(DESTDIR)/opt/crusty/$(name) ; \
 	fi
-	
+
 	@$(foreach x, $(AptDirs), \
 		if   [ ! -d  $(DESTDIR)/opt/crusty/$(name)/$x ]; \
 		then mkdir   $(DESTDIR)/opt/crusty/$(name)/$x  ; \
@@ -69,7 +69,7 @@ crustyStartups: $(DESTDIR)/opt/crusty/crusty/etc/login/hello
 
 $(DESTDIR)/opt/crusty/crusty/etc/login/hello : etc/login/hello       
 	@cp -v $< $@	
-	
+
 # ---------------------------------------------------------------------------
 # application #2: svns
 #    some svn suppport for svn repositories stores in $HOME/svns
@@ -116,7 +116,7 @@ bash_profile : $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile : etc/dotbash_profile 
 	@cp -v $< $@	
-	
+
 # ---------------------------------------------
 # emacs
 
