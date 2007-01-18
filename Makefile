@@ -20,13 +20,13 @@ editors : nano vim emacs
 apps : crusty svns snownews 
 
 showapps :
-	tree ~/opt 
+	tree -L 1 $(DESTDIR)/opt 
 
 hello : doc/hello.txt
 	@cat doc/hello.txt
 
 installdirs :
-	@$(foreach x, $(Dirs), if [ ! -d $(DESTDIR)/$x ]; then mkdir $(DESTDIR)/$x; fi; )
+	@$(foreach x, $(Dirs), if [ ! -d $(DESTDIR)/$x ]; then mkdir -p $(DESTDIR)/$x; fi; )
 
 dist :
 	cd /tmp; \
@@ -90,7 +90,7 @@ snownews : rss-snownews/snownews-$(Snownews).tar.gz
 	make name=snownews application 
 	if [ ! -d $(DESTDIR)/tmp/snownews ]; then mkdir $(DESTDIR)/tmp/snownews; fi; 
 	cp rss-snownews/snownews-$(Snownews).tar.gz $(DESTDIR)/tmp/snownews;
-	cd $(DESTDIR)/tmp/snownews;  tar xvfz snownews-$(Snownews).tar.gz ; 
+	cd $(DESTDIR)/tmp/snownews;  tar xfz snownews-$(Snownews).tar.gz ; 
 	cd $(DESTDIR)/tmp/snownews/snownews-$(Snownews) ; \
 		./configure --prefix=$(DESTDIR)/opt/crusty/snownews ;  \
 		make ;                                           \
@@ -102,16 +102,16 @@ snownews : rss-snownews/snownews-$(Snownews).tar.gz
 bash : bashrc bash_profile
 
 bashrc : $(DESTDIR)/opt/crusty/crusty/etc/dotbashrc 
-	@if [ ! -f "$(DESTDIR)/.bashrc" ]; \
-	then echo '. ~/opt/crusty/crusty/etc/dotbashrc' > $(DESTDIR)/.bashrc; \
+	@if [ ! -f "$(HOME)/.bashrc" ]; \
+	then echo '. ~/opt/crusty/crusty/etc/dotbashrc' > $(HOME)/.bashrc; \
 	fi
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotbashrc : etc/dotbashrc       
 	@cp -v $< $@	
 
 bash_profile : $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile 
-	@if [ ! -f "$(DESTDIR)/.bash_profile" ]; \
-	then echo '. ~/opt/crusty/crusty/etc/dotbash_profile' > $(DESTDIR)/.bash_profile; \
+	@if [ ! -f "$(HOME)/.bash_profile" ]; \
+	then echo '. ~/opt/crusty/crusty/etc/dotbash_profile' > $(HOME)/.bash_profile; \
 	fi
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile : etc/dotbash_profile 
@@ -121,10 +121,10 @@ $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile : etc/dotbash_profile
 # emacs
 
 emacs : $(DESTDIR)/opt/crusty/crusty/etc/dotemacs
-	@if [ ! -f "$(DESTDIR)/.emacs" ]; \
-	then echo '(load "$(HOME)/opt/crusty/crusty/etc/dotemacs")' > $(DESTDIR)/.emacs ; \
+	@if [ ! -f "$(HOME)/.emacs" ]; \
+	then echo '(load "$(DESTDIR)/opt/crusty/crusty/etc/dotemacs")' > $(HOME)/.emacs ; \
 	else echo 'Ensure  that ~/.emacs includes: '  ;\
-	     echo '(load "$(HOME)/opt/crusty/crusty/etc/dotemacs")'  ; \
+	     echo '(load "$(DESTDIR)/opt/crusty/crusty/etc/dotemacs")'  ; \
 	fi
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotemacs  : etc/dotemacs
@@ -134,8 +134,8 @@ $(DESTDIR)/opt/crusty/crusty/etc/dotemacs  : etc/dotemacs
 # nano
 
 nano :  etc/dotnanorc
-	@if [ ! -f "$(DESTDIR)/.nanorc" ]; \
-	then cp -v etc/dotnanorc $(DESTDIR)/.nanorc; \
+	@if [ ! -f "$(HOME)/.nanorc" ]; \
+	then cp -v etc/dotnanorc $(HOME)/.nanorc; \
 	else echo 'Ensure  that ~/.nanorc exists.'  ;\
 	fi
 # ---------------------------------------------
@@ -144,22 +144,22 @@ nano :  etc/dotnanorc
 vim : vimDirs vimColors vimRc  vimOutliner
 
 vimRc : $(DESTDIR)/opt/crusty/crusty/etc/dotvimrc 
-	@if [ ! -f "$(DESTDIR)/.vimrc" ]; \
-	then echo 'source $(HOME)/opt/crusty/crusty/etc/dotvimrc' > $(DESTDIR)/.vimrc ; \
+	@if [ ! -f "$(HOME)/.vimrc" ]; \
+	then echo 'source $(DESTDIR)/opt/crusty/crusty/etc/dotvimrc' > $(HOME)/.vimrc ; \
 	else echo 'Ensure  that ~/.vimrc includes: '  ;\
-	     echo 'source $(HOME)/opt/crusty/crusty/etc/dotvimrc'  ; \
+	     echo 'source $(DESTDIR)/opt/crusty/crusty/etc/dotvimrc'  ; \
 	fi
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotvimrc  : etc/dotvimrc
 	@cp -v $< $@	
 
 vimDirs :
-	@$(foreach x, $(VimDirs), if [ ! -d $(HOME)/$x ]; then mkdir $(HOME)/$x; fi; )
+	@$(foreach x, $(VimDirs), if [ ! -d $(DESTDIR)/$x ]; then mkdir $(DESTDIR)/$x; fi; )
 
-vimColors : $(HOME)/$(VimColors)
+vimColors : $(DESTDIR)/$(VimColors)
 	@$(foreach f, $(wildcard vim/colors/* ), \
-	if   [ $f -nt $(HOME)/$(VimColors)/$(notdir $f) ];    \
-	then cp -v $f    $(HOME)/$(VimColors);         \
+	if   [ $f -nt $(DESTDIR)/$(VimColors)/$(notdir $f) ];    \
+	then cp -v $f    $(DESTDIR)/$(VimColors);         \
 	fi; )
 
 vimOutliner : vim/vimoutliner-${VimOutliner}
@@ -170,10 +170,10 @@ vimOutliner : vim/vimoutliner-${VimOutliner}
 # start here
 #
 screen : $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc
-	@if [ ! -f "$(DESTDIR)/.screenrc" ]; \
-	then echo 'source "$(HOME)/opt/crusty/crusty/etc/dotscreenrc"' > $(DESTDIR)/.screenrc ; \
+	@if [ ! -f "$(HOME)/.screenrc" ]; \
+	then echo 'source "$(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc"' > $(HOME)/.screenrc ; \
 	else echo 'The file ~/.screenrc could use this line: '; \
-	     echo 'source "$(HOME)/opt/crusty/crusty/etc/dotscreenrc"' ; \
+	     echo 'source "$(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc"' ; \
 	fi
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc  : etc/dotscreenrc
