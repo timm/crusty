@@ -1,3 +1,13 @@
-#summary Dave Riggs
+#summary Dave Riggs in a Nutshell
 
-= Loves Emacs =
+[http://gl1tch.com/~lukewarm/images/slax0r_150.jpg]
+
+= Bio =
+
+GNU/Linux user and proponent of [http://gnu.org Free Software] since the late 90's. Former software engineer with [http://saic.com SAIC], [http://www.lockheedmartin.com Lockheed Martin], [http://www.threewide.com Threewide Corp.], and [http://www.csee.wvu.edu/helpdesk/ WVU CSEE].
+
+Vice-Chairman of the [http://www.caves.org/grotto/wvusg/ WVU Student Grotto] of the [http://caves.org National Speleological Society].
+
+Dreams in [http://python.org Python].
+
+Supports the idea of [http://free-culture.cc/ Free Culture].
