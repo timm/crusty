@@ -6,3 +6,5 @@
 
   * MediaItoku
   * TimMenzies
+  * DaveRiggs
+  * DavidSheppard
