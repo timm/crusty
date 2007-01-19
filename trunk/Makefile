@@ -13,11 +13,13 @@ VimDirs = .vim .vim/plugin $(VimColors)
 
 ###########################################################################
 
-all : hello installdirs apps bash editors screen done
+all: snownews
+
+install : hello installdirs apps bash editors screen done
 
 editors : nano vim emacs
 
-apps : crusty svns snownews 
+apps : crusty svns installsnownews 
 
 showapps :
 	tree -L 1 $(DESTDIR)/opt 
@@ -93,7 +95,12 @@ snownews : rss-snownews/snownews-$(Snownews).tar.gz
 	cd $(DESTDIR)/tmp/snownews;  tar xfz snownews-$(Snownews).tar.gz ; 
 	cd $(DESTDIR)/tmp/snownews/snownews-$(Snownews) ; \
 		./configure --prefix=$(DESTDIR)/opt/crusty/snownews ;  \
-		make ;                                           \
+		make
+
+
+installsnownews : snownews
+	make name=snownews application 
+	cd $(DESTDIR)/tmp/snownews/snownews-$(Snownews) ; \
 		make install
 
 # ---------------------------------------------
