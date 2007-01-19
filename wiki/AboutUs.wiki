@@ -8,3 +8,4 @@
   * TimMenzies
   * DaveRiggs
   * DavidShepard
+  * ScottHenson
