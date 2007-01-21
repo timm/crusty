@@ -110,7 +110,7 @@ bash : bashrc bash_profile
 
 bashrc : $(DESTDIR)/opt/crusty/crusty/etc/dotbashrc 
 	@if [ ! -f "$(HOME)/.bashrc" ]; \
-	then echo '. ~/opt/crusty/crusty/etc/dotbashrc' > $(HOME)/.bashrc; \
+	then echo '. $(DESTDIR)/opt/crusty/crusty/etc/dotbashrc' > $(HOME)/.bashrc; \
 	fi
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotbashrc : etc/dotbashrc       
@@ -118,7 +118,7 @@ $(DESTDIR)/opt/crusty/crusty/etc/dotbashrc : etc/dotbashrc
 
 bash_profile : $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile 
 	@if [ ! -f "$(HOME)/.bash_profile" ]; \
-	then echo '. ~/opt/crusty/crusty/etc/dotbash_profile' > $(HOME)/.bash_profile; \
+	then echo '. $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile' > $(HOME)/.bash_profile; \
 	fi
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile : etc/dotbash_profile 
