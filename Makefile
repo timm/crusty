@@ -1,4 +1,4 @@
-BIN     = /bin/sh
+ BIN     = /bin/sh
 DESTDIR = $(HOME)
 
 Snownews = 1.5.7
