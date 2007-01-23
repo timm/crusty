@@ -1,6 +1,9 @@
+# Assign a new variable.
 Tmp=`mktemp`
+# Loop through a list.
 for i in *
 do 
+# gawk at some text.
 	gawk '{sub(/\015$/,""); print $0}' $i > $Tmp
 	mv $Tmp $i
 done
