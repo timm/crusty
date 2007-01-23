@@ -1,0 +1,17 @@
+#summary About Damian
+
+= Damian Christey =
+
+== Education ==
+  * Graduated from Pendleton County high school
+  * Senior Computer Science major at WVU
+
+== Employment ==
+  * System Adminstrator for [http://math.wvu.edu/ WVU Department of Mathematics]
+    ** Manage Linux-based web, email, and file servers
+    ** Built and maintain a 48 processor Beowulf cluster for fluid dynamics simulation
+
+== Side projects ==
+  * E-commerce site based on [http://drupal.org/ Drupal]: [http://amberleevanover.com/ Amberlee Vanover Photography]
+
+
