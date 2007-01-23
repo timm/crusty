@@ -1,6 +1,6 @@
  BIN     = /bin/sh
 DESTDIR = $(HOME)
-
+ 
 Snownews = 1.5.7
 VimOutliner = 0.3.4
 
