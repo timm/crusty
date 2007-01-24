@@ -1,4 +1,5 @@
 #summary Drew's Wiki
+#labels About Drew
 
 My website is http://proslacker.net - check it out.
 -It's set up to be a place to host anyone's project repository so that anyone can look at your work and comment / improve on it.
