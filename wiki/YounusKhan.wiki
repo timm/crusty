@@ -2,10 +2,10 @@
 
 Relatively new To Linux.....in uncharted territory, but not sinking yet.
 
-        "This is Major Tom to Ground Control 
+    	"This is Major Tom to Ground Control 
         
-		:I'm stepping through the door
+		I'm stepping through the door
         
-		:And Im floating in a most peculiar way
+		And Im floating in a most peculiar way
         
-		:And the stars look very different today"
+		And the stars look very different today"
