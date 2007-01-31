@@ -1,6 +1,6 @@
 #summary World of daveman1010220
 
-January 31, 2007
+_January 31, 2007_
 
 Some amazing facts to accompany the post from earlier:
 
@@ -9,7 +9,7 @@ http://www.theesa.com/facts/sales_genre_data.php
 It seems to me the scariest thing of all to a console maker is the prospect of losing money on the games. The games are the golden egg with consoles. For folks who have been long-time PC gamers though, not being able to add mods to "The Sims" is un-thinkable. It stands to reason that if independent developers can't get their hands on development kits, there won't be many mods for console-based Sims, unless they come from the manufacturer of the game. Being a long-time PC gamer, it isn't hard to notice that many game manufacturers are ignoring the PC game market these days. Perhaps this is why...
 
 
-January 31, 2007
+_January 31, 2007_
 
 I recently bought my wife a Nintendo Wii. It was intended as a Christmas present but they were impossible to get during the holiday season, so I picked one up a couple of weeks ago. The system is a lot of fun and the controller design is inspiring. So inspiring in fact, that I thought it would be fun to have a look at what it would take to develop some web apps for the system. The developer kit for the Wii will be sold at a little over $1700.00. Now I know what you're thinking, "Wow! What a bargain!" But wait there's more! From a post on nwiizone.com:
 
@@ -19,14 +19,14 @@ Hello and thank you for contacting Nintendo, From time to time we hear from our 
 If this isn't just the perfect model of cathedral-style development. Proprietary, closed-source, and you can't even buy in if you want to because you are just not worthy. This actually comes as a bit of a culture shock to me. I suppose I've been lucky growing up during a time when much of the innovation in software development has come from the open source world. The open source world is one where anyone with a good idea has something to contribute. Nintendo's world seems to be one where only those with a good idea for profit have something to contribute. How sad.
 
 
-January 25, 2007
+_January 25, 2007_
 
 Found a good link today:
 
 http://kevininscoe.com/pub/Nowee.opensource.png
 
 
-January 17, 2007
+_January 17, 2007_
 
 Researching LISP today. Anyone care to recommend a good Mac OS X environment for LISP?
 
