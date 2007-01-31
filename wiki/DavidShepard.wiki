@@ -2,6 +2,15 @@
 
 January 31, 2007
 
+Some amazing facts to accompany the post from earlier:
+
+http://www.theesa.com/facts/sales_genre_data.php
+
+It seems to me the scariest thing of all to a console maker is the prospect of losing money on the games. The games are the golden egg with consoles. For folks who have been long-time PC gamers though, not being able to add mods to "The Sims" is un-thinkable. It stands to reason that if independent developers can't get their hands on development kits, there won't be many mods for console-based Sims, unless they come from the manufacturer of the game. Being a long-time PC gamer, it isn't hard to notice that many game manufacturers are ignoring the PC game market these days. Perhaps this is why...
+
+
+January 31, 2007
+
 I recently bought my wife a Nintendo Wii. It was intended as a Christmas present but they were impossible to get during the holiday season, so I picked one up a couple of weeks ago. The system is a lot of fun and the controller design is inspiring. So inspiring in fact, that I thought it would be fun to have a look at what it would take to develop some web apps for the system. The developer kit for the Wii will be sold at a little over $1700.00. Now I know what you're thinking, "Wow! What a bargain!" But wait there's more! From a post on nwiizone.com:
 
 "This is a message i got from Nintendo when inquiring about their dev kit.
