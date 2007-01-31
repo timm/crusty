@@ -14,3 +14,13 @@ vimtutor
 }}}
 
 Give yourself at least a half hour to work through the tutorial, it will be well worth the time.
+
+==Useful Stuff==
+
+I find a particular set of options incredibly useful when working with Vim. [http://letomoxy.net/.vimrc Here] is a copy of my .vimrc file, with a few modifications to make it work on most people's screens. You can at any time get information on any of the options in this file by typing the following from within Vim's default mode:
+
+{{{
+:help OPTION_NAME
+}}}
+
+where OPTION_NAME is whatever the item is you want more information on.
