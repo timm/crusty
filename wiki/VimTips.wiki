@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Helping the world become more Vim-friendly, one user at a time.
 
 = Introduction =
 
