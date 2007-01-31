@@ -2,8 +2,6 @@
 
 = Friends of Crusty =
 
-=== Who's Who ===
-
   * [AliBahu Ali Bahu]
   * [AndyGoble Andy Goble]
   * [BrianSowers Brian Sowers]
