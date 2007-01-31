@@ -4,23 +4,23 @@
 
 === Who's Who ===
 
-  * AliBahu
-  * AndyGoble
-  * BrianSowers
-  * ChrisCole
-  * DamianChristey
-  * DaveRiggs
-  * DavidShepard
-  * DerekPerriero
-  * DrewKerrigan
-  * GregoryGay
-  * JonathanLynch
-  * JoshuaHoffman
-  * MediaItoku
-  * MikeBittle
-  * PageName
-  * RobertLilly
-  * ScottHenson
-  * TimMenzies
-  * YounusKhan
-  * ZacheryMilton
+  * [AliBahu Ali Bahu]
+  * [AndyGoble Andy Goble]
+  * [BrianSowers Brian Sowers]
+  * [ChrisCole Chris Cole]
+  * [DamianChristey Damian Christey]
+  * [DaveRiggs Dave Riggs]
+  * [DavidShepard David Shepard]
+  * [DerekPerriero Derek Perriero]
+  * [DrewKerrigan Drew Kerrigan]
+  * [GregoryGay Gregory Gay]
+  * [JonathanLynch Jonathan Lynch]
+  * [JoshuaHoffman Joshua Hoffman]
+  * [MediaItoku Media Itoku]
+  * [MikeBittle Mike Bittle]
+  * [PageName Page Name]
+  * [RobertLilly Robert Lilly]
+  * [ScottHenson Scott Henson]
+  * [TimMenzies Tim Menzies]
+  * [YounusKhan Younus Khan]
+  * [ZacheryMilton Zachery Milton]
