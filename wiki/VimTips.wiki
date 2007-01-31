@@ -1,0 +1,16 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+For the un-initiated, *[http://www.vim.org Vim]* is possibly the best editor of text ever created. This is not to say it is the most featured editor ever created, that distinction likely belongs to emacs. However, if you want to become a text-ninja, this is _the_ tool to learn.
+
+
+= Details =
+
+I'll save the drudgery of installing Vim for the experts at [http://www.vim.org vim.org]. Assuming you already have Vim installed and ready for use somewhere, the easiest way to get started is to sit down, fire up your console, and type:
+
+{{{
+vimtutor
+}}}
+
+Give yourself at least a half hour to work through the tutorial, it will be well worth the time.
