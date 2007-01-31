@@ -2,7 +2,7 @@
 
 = Introduction =
 
-For the un-initiated, *[http://www.vim.org Vim]* is possibly the best editor of text ever created. This is not to say it is the most featured editor ever created, that distinction likely belongs to emacs. However, if you want to become a text-ninja, this is _the_ tool to learn.
+For the un-initiated, *[http://www.vim.org Vim]* is possibly the best editor of text ever created. This is not to say it is the most featured editor ever created, that distinction likely belongs to emacs. However, if you want to become a text-ninja, this is _the_ tool to learn. There are many good reasons to learn how to use a quality text editor. One of the main reasons I first learned how to use Vim was its usefulness as a command line tool on linux boxes. This is an editor you will find installed on just about every linux box you touch, or at least available with a few keystrokes for installation. It also works great on Mac OS X, Windows XP, and even [http://en.wikipedia.org/wiki/BeOS BeOS] for those of you who remember that _b-e-a-utiful_ little operating system.
 
 
 = Details =
@@ -17,7 +17,7 @@ Give yourself at least a half hour to work through the tutorial, it will be well
 
 ==Useful Stuff==
 
-I find a particular set of options incredibly useful when working with Vim. [http://letomoxy.net/.vimrc Here] is a copy of my .vimrc file, with a few modifications to make it work on most people's screens. You can at any time get information on any of the options in this file by typing the following from within Vim's default mode:
+I find a particular set of options incredibly useful when working with Vim. *[http://letomoxy.net/.vimrc Here]* is a copy of my .vimrc file, with a few modifications to make it work on most people's screens. You can at any time get information on any of the options in this file by typing the following from within Vim's default mode:
 
 {{{
 :help OPTION_NAME
