@@ -7,3 +7,5 @@ Suppose you are reading your mail or even composing a mail message in mutt, when
 The *[http://www.gnu.org/software/screen/ GNU screen program]* is a utility of great importance to end users working on a remote console. This small utility provides a sort of text-based windowing system, which allows multiple shells and shell applications to be open simultaneously. This brief article attempts to introduce a small subset of 'screen' and its vast options.
 
 = Details =
+
+screen is useful for a good many tasks, but one of the most common things that occurs when working with a remote session (unfortunately) is getting disconnected. If you've ever found yourself writing code in an editor like emacs or vim
