@@ -8,4 +8,4 @@ The *[http://www.gnu.org/software/screen/ GNU screen program]* is a utility of g
 
 = Details =
 
-screen is useful for a good many tasks, but one of the most common things that occurs when working with a remote session (unfortunately) is getting disconnected. If you've ever found yourself writing code in an editor like emacs or vim
+screen is useful for a good many tasks, but one of the most common things that occurs when working with a remote session (unfortunately) is getting disconnected. If you've ever found yourself writing code in an editor like *[EmacsTips emacs]* or *[VimTips vim]*
