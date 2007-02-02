@@ -30,4 +30,4 @@ Once again, this session can be re-established by entering 'screen -r' from the 
 
 It's great to know there is a layer of protection offered by using screen while editing over a remote console session, but if this is all screen could do it would hardly be worthy of a tutorial of its own(let alone the dozens of these you can find on the 'net). Let's begin with screen's most common keystroke, CTRL-A.
 
-CTRL-A
+CTRL-A was mentioned above but it is worth a moment of reflection. CTRL-A is the starting key sequence for nearly all of screen's many functions. Note that at current time, if you are using *[CrustyHome C.r.us.t.y.]*, this key sequence is substituted for CTRL-Z. Now that you know CTRL-A (CTRL-Z), let's look at some useful key sequences.
