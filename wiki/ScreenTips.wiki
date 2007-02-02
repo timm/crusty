@@ -1,0 +1,9 @@
+#summary Commonly used screen commands / places to get more info.
+
+= Introduction =
+
+Suppose you are reading your mail or even composing a mail message in mutt, when suddenly the system begins to respond slowly. A useful tool for examining what processes are currently being run on the system is 'top'. Unfortunately, you're going to have to get out of your e-mail so that you can fire up 'top' and have a look at the state of current running processes. What if there was a better way?
+
+The *[http://www.gnu.org/software/screen/ GNU screen program]* is a utility of great importance to end users working on a remote console. This small utility provides a sort of text-based windowing system, which allows multiple shells and shell applications to be open simultaneously. This brief article attempts to introduce a small subset of 'screen' and its vast options.
+
+= Details =
