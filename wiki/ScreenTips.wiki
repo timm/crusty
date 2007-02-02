@@ -13,3 +13,21 @@ screen is useful for a good many tasks, but one of the most common things that o
 {{{
 screen -r
 }}}
+
+Most of the time, this is all that is necessary to re-establish a screen session, but screen supports a lot of options in the area of re-establishing sessions. Check them out at any time with:
+
+{{{
+man screen
+}}}
+
+What if you actually want to quit a screen session on purpose? There is a way to do this as well, by pressing:
+
+{{{
+CTRL-A CTRL-D
+}}}
+
+Once again, this session can be re-established by entering 'screen -r' from the console. Note that re-establishing a session relies on the fact that the system maintaining the screen session has not lost power or been rebooted. screen sessions live in RAM as a regular system process and will not persist across a system restart.
+
+It's great to know there is a layer of protection offered by using screen while editing over a remote console session, but if this is all screen could do it would hardly be worthy of a tutorial of its own(let alone the dozens of these you can find on the 'net). Let's begin with screen's most common keystroke, CTRL-A.
+
+CTRL-A
