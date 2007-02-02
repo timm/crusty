@@ -34,3 +34,5 @@ CTRL-A was mentioned above but it is worth a moment of reflection. CTRL-A is the
 
 || *Key Sequence* || *Command Function* ||
 || CTRL-A CTRL-C  || Create a new console in the current screen session. ||
+|| CTRL-A CTRL-A  || Switch between the current and the previous console. ||
+|| CTRL-A "       || View a curses-based list of all screen consoles. ||
