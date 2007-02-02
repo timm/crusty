@@ -36,3 +36,7 @@ CTRL-A was mentioned above but it is worth a moment of reflection. CTRL-A is the
 || CTRL-A CTRL-C  || Create a new console in the current screen session. ||
 || CTRL-A CTRL-A  || Switch between the current and the previous console. ||
 || CTRL-A "       || View a curses-based list of all screen consoles. ||
+|| CTRL-A CTRL-D  || Detach the current screen session. ||
+|| CTRL-A CTRL-\  || Kill the current screen session and _all_ sub-processes of screen. ||
+
+This is the subset of screen commands this author uses most frequently. Since this is a wiki page, feel free to add your favorite screen commands to this list to share with the rest of us.
