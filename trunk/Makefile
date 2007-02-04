@@ -1,5 +1,6 @@
- BIN     = /bin/sh
+BIN     = /bin/sh
 DESTDIR = $(HOME)
+Tmp     = $(shell sh bash/myMktemp)
  
 Snownews = 1.5.7
 VimOutliner = 0.3.4
@@ -33,13 +34,10 @@ installdirs :
 	@$(foreach x, $(Dirs), echo $x; if [ ! -d "$(DESTDIR)/$x" ]; then mkdir -vp $(DESTDIR)/$x; fi; )
 
 dist :
-	cd /tmp; \
-	if [ -d crustyzip ]; then rm -rf crustyzip; fi; \
-	mkdir crustyzip; \
-	cd crustyzip; 
+	cd $(Tmp) ;                     \
 	svn export $(CRUSTY_SVN) crusty; \
-	zip -r crusty.zip crusty; \
-	ls -lsa crusty.zip; \
+	zip -r crusty.zip crusty;         \
+	ls -lsa crusty.zip;                \
 	pwd
 
 # ---------------------------------------------
