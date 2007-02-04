@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Derek.perriero, Jan 30 
+
+## capture the screen pid with a little parsing
+SCREENPID=`screen -ls | grep -e '[0-9]\.pts' | awk '/[d\]]/{print $1}' | awk '{split($1,a,"."); print a[1]}'`
+QUIT="Quit"
+
+while [ 1 ]
+do
+  printf "$QUIT crusty? (yes/no) "
+  read choice
+
+  if [ "$choice" == "yes" ]
+      then
+      
+      ## just a simulated crusty exit with progress dots
+      printf "Stopping crusty"
+      for((i=0;i<8;i+=1)); do
+	  	sleep 0.3
+	  	printf "."
+      done
+      ## end cool crusty exit
+      
+      ## detach screen session
+      screen -d $SCREENPID
+
+      ## after detach, kill the pid
+      kill $SCREENPID
+      
+      ## break out of while loop (not necessary, but precautionary)
+      break
+  elif [ "$choice" == "no" ]
+  then
+      QUIT="quit"
+      printf "Select another crusty option or, "
+  else
+      QUIT="Quit"
+      echo "Choose yes or no."
+  fi
+done
