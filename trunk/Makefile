@@ -8,8 +8,8 @@ VimOutliner = 0.3.4
 CRUSTY_SVN=https://crusty.googlecode.com/svn/
 
 Dirs    = opt opt/crusty svns tmp tmp/backup var var/log .crusty \
-          bin doc doc/wiki    etc etc/login lib 
-AptDirs = bin doc doc/wiki eg etc etc/login lib
+          bin doc doc/wiki doc/man doc/pdf doc/html    etc etc/login lib share 
+AptDirs = bin doc doc/wiki doc/man doc/pdf doc/html eg etc etc/login lib share 
 
 VimColors = .vim/colors
 VimDirs   = .vim .vim/plugin $(VimColors)
@@ -109,7 +109,7 @@ installsnownews : snownews
 # ---------------------------------------------
 # bash
 
-bash : bashrc bash_profile
+bash : bashrc bash_profile bashdocs
 
 bashrc : $(DESTDIR)/opt/crusty/crusty/etc/dotbashrc 
 	@if [ ! -f "$(HOME)/.bashrc" ]; \
@@ -127,6 +127,27 @@ bash_profile : $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile
 $(DESTDIR)/opt/crusty/crusty/etc/dotbash_profile : etc/dotbash_profile 
 	@cp -v $< $@	
 
+bashdocs : doc/sandbox.emf
+	@make app=crusty x=sandbox  doco 
+
+# 
+# ---------------------------------------------
+# documents
+
+doco : 	$(DESTDIR)/opt/crusty/$(app)/doc/man/$x.man \
+		$(DESTDIR)/opt/crusty/$(app)/doc/html/$x.html \
+ 		$(DESTDIR)/opt/crusty/$(app)/doc/pdf/$x.pdf 
+
+$(DESTDIR)/opt/crusty/$(app)/doc/man/$x.man   : doc/$x.emf 
+	groff -Tascii -man $< > $@
+$(DESTDIR)/opt/crusty/$(app)/doc/html/$x.html : doc/$x.emf  
+	groff -Thtml -man $< > $@
+$(DESTDIR)/opt/crusty/$(app)/doc/pdf/$x.pdf   : doc/$x.emf 
+	groff -Tps -man $< > $(Tmp)/$x.ps
+	pstopdf $(Tmp)/$x.ps
+	cp $(Tmp)/$x.pdf $@
+	
+# 
 # ---------------------------------------------
 # emacs
 
