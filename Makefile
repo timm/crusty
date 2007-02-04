@@ -6,8 +6,10 @@ VimOutliner = 0.3.4
 
 CRUSTY_SVN=https://crusty.googlecode.com/svn/
 
-Dirs    = bin doc doc/wiki    etc etc/login lib opt opt/crusty svns tmp tmp/backup var var/log 
+Dirs    = opt opt/crusty svns tmp tmp/backup var var/log .crusty \
+          bin doc doc/wiki    etc etc/login lib 
 AptDirs = bin doc doc/wiki eg etc etc/login lib
+
 VimColors = .vim/colors
 VimDirs = .vim .vim/plugin $(VimColors)
 
@@ -28,7 +30,7 @@ hello : doc/hello.txt
 	@cat doc/hello.txt
 
 installdirs :
-	@$(foreach x, $(Dirs), if [ ! -d $(DESTDIR)/$x ]; then mkdir -p $(DESTDIR)/$x; fi; )
+	@$(foreach x, $(Dirs), echo $x; if [ ! -d "$(DESTDIR)/$x" ]; then mkdir -vp $(DESTDIR)/$x; fi; )
 
 dist :
 	cd /tmp; \
