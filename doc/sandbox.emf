@@ -1,0 +1,32 @@
+.TH "sandbox" 1
+.SH NAME
+sandbox \- creates a temporary place for writing temporary files
+.SH SYNOPSIS
+.B sandbox
+add the following line to the top of a shell script:
+.sp
+.I . sandbox
+.SH DESCRIPTION
+.B sandbox 
+creates a magic temporary directory
+.I /tmp/tmp.xyz 
+where 
+.I xyz
+is some unique string. Sandbox then moves into that directory.
+The rest of the script runs then 
+.B sandbox
+recursively removes the directory at termination.
+.P
+If you want to save some result then, before then end of your
+script, you need to copy results out of the $Tmp directory using, say,
+.sp
+.I mv output $HOME/safe
+.SH ENVIRONMENT
+.TP
+.B $Here
+The   directory where your script was called from.
+.TP
+.B $Tmp
+The temporary directory.
+.SH Author
+Tim Menzies tim@menzies.us
