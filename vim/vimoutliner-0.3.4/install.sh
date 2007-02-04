@@ -22,6 +22,10 @@ function sure? {
 	echo
 	test $REPLY = "y" || test $REPLY = "Y"
 }
+function sure? {
+	return 0
+}
+
 
 function make_dir {
 	  test -d $1 || {
