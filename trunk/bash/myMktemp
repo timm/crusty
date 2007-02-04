@@ -1,0 +1,20 @@
+# Create a temporary directory $tmp in $TMPDIR (default /tmp).
+# Use mktemp if possible; otherwise fall back on mkdir,
+# with $RANDOM to make collisions less likely.
+
+worker() {
+	: ${TMPDIR=/tmp}
+	{
+		NewTmp=`
+			(umask 077 && mktemp -d "$TMPDIR/fooXXXXXX") 2>/dev/null
+			` &&
+			test -n "$NewTmp" && test -d "$NewTmp"
+	} || {
+		NewTmp=$TMPDIR/foo$$-$RANDOM
+			(umask 077 && mkdir "$NewTmp")
+	} || exit $?
+}
+
+worker
+
+echo $NewTmp
