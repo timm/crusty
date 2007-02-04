@@ -1,6 +1,6 @@
 BIN     = /bin/sh
 DESTDIR = $(HOME)
-Tmp     = $(shell sh bash/myMktemp)
+Tmp     = /tmp/foo
  
 Snownews = 1.5.7
 VimOutliner = 0.3.4
@@ -12,7 +12,7 @@ Dirs    = opt opt/crusty svns tmp tmp/backup var var/log .crusty \
 AptDirs = bin doc doc/wiki eg etc etc/login lib
 
 VimColors = .vim/colors
-VimDirs = .vim .vim/plugin $(VimColors)
+VimDirs   = .vim .vim/plugin $(VimColors)
 
 ###########################################################################
 
@@ -31,7 +31,8 @@ hello : doc/hello.txt
 	@cat doc/hello.txt
 
 installdirs :
-	@$(foreach x, $(Dirs), echo $x; if [ ! -d "$(DESTDIR)/$x" ]; then mkdir -vp $(DESTDIR)/$x; fi; )
+	if [ ! -d "$(Tmp)" ]; then mkdir $(Tmp); fi
+	@$(foreach x, $(Dirs),  if [ ! -d "$(DESTDIR)/$x" ]; then mkdir  $(DESTDIR)/$x; fi; )
 
 dist :
 	cd $(Tmp) ;                     \
@@ -89,18 +90,20 @@ svns :
 #    a net text-base rss reader
 
 snownews : rss-snownews/snownews-$(Snownews).tar.gz 
+	echo "=== $(Tmp) ==="
+	echo "=== $(Tmp) ==="
 	make name=snownews application 
-	if [ ! -d $(DESTDIR)/tmp/snownews ]; then mkdir $(DESTDIR)/tmp/snownews; fi; 
-	cp rss-snownews/snownews-$(Snownews).tar.gz $(DESTDIR)/tmp/snownews;
-	cd $(DESTDIR)/tmp/snownews;  tar xfz snownews-$(Snownews).tar.gz ; 
-	cd $(DESTDIR)/tmp/snownews/snownews-$(Snownews) ; \
+	if [ ! -d $(Tmp)/snownews ]; then mkdir $(Tmp)/snownews; fi; 
+	cp rss-snownews/snownews-$(Snownews).tar.gz $(Tmp)/snownews;
+	cd $(Tmp)/snownews;  tar xfz snownews-$(Snownews).tar.gz ; 
+	cd $(Tmp)/snownews/snownews-$(Snownews) ; \
 		./configure --prefix=$(DESTDIR)/opt/crusty/snownews ;  \
 		make
 
 
 installsnownews : snownews
 	make name=snownews application 
-	cd $(DESTDIR)/tmp/snownews/snownews-$(Snownews) ; \
+	cd $(Tmp)/snownews/snownews-$(Snownews) ; \
 		make install
 
 # ---------------------------------------------
@@ -188,4 +191,4 @@ $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc  : etc/dotscreenrc
 # ---------------------------------------------
 # done
 done : showapps doc/done.txt
-	cat doc/done.txt
+	sh doc/done.txt $(DESTDIR)

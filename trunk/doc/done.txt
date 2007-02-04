@@ -1,14 +1,14 @@
-
+cat<<EOF
 
 ---| config | --------------------------------------
 
 1) Your $HOME/.bashrc needs this line:
 
-	. ~/opt/crusty/crusty/etc/dotbashrc
+	. $1/opt/crusty/crusty/etc/dotbashrc
 
 2) Your $HOME/.bash_profile needs this line:
 
-	. ~/opt/crusty/crusty/etc/dotbash_profile
+	. $1/opt/crusty/crusty/etc/dotbash_profile
 
 3) Depending on what editor you use, then...
 3a) If you use nano, Your $HOME/.nanorc file needs some lines.
@@ -38,3 +38,4 @@ or, if this is not your first install, just run
 (Note: these scripts  are run automatically at login.
 So the next time you log on, you won't have to do anything
 special to access these tools.)
+EOF
