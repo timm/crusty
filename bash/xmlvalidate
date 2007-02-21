@@ -11,6 +11,8 @@ xmlproc libs installed for their own default Python version.
 App is silent and returns 0 on successful validation. It spits error
 messages to stderr and returns non-zero on failed validation.
 
+This trivial script is public domain software.
+
 2007-02-20  David A. Riggs <driggs@mix.wvu.edu>
 
 Inspiration: http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/220472
