@@ -1,6 +1,6 @@
 BIN     = /bin/sh
 DESTDIR = $(HOME)
-Tmp     = /tmp/foo
+Tmp     = ~/tmp/foo
  
 Snownews = 1.5.7
 VimOutliner = 0.3.4
@@ -31,8 +31,8 @@ hello : doc/hello.txt
 	@cat doc/hello.txt
 
 installdirs :
-	if [ ! -d "$(Tmp)" ]; then mkdir $(Tmp); fi
-	@$(foreach x, $(Dirs),  if [ ! -d "$(DESTDIR)/$x" ]; then mkdir  $(DESTDIR)/$x; fi; )
+	if [ ! -d "$(Tmp)" ]; then mkdir -p $(Tmp); fi
+	@$(foreach x, $(Dirs),  if [ ! -d "$(DESTDIR)/$x" ]; then mkdir -p $(DESTDIR)/$x; fi; )
 
 dist :
 	cd $(Tmp) ;                     \
@@ -91,7 +91,6 @@ svns :
 
 snownews : rss-snownews/snownews-$(Snownews).tar.gz 
 	echo "=== $(Tmp) ==="
-	echo "=== $(Tmp) ==="
 	make name=snownews application 
 	if [ ! -d $(Tmp)/snownews ]; then mkdir $(Tmp)/snownews; fi; 
 	cp rss-snownews/snownews-$(Snownews).tar.gz $(Tmp)/snownews;
@@ -136,7 +135,7 @@ bashdocs : doc/sandbox.emf
 
 doco : 	$(DESTDIR)/opt/crusty/$(app)/doc/man/$x.man \
 		$(DESTDIR)/opt/crusty/$(app)/doc/html/$x.html \
- 		$(DESTDIR)/opt/crusty/$(app)/doc/pdf/$x.pdf 
+		$(DESTDIR)/opt/crusty/$(app)/doc/pdf/$x.pdf 
 
 $(DESTDIR)/opt/crusty/$(app)/doc/man/$x.man   : doc/$x.emf 
 	groff -Tascii -man $< > $@
@@ -146,7 +145,7 @@ $(DESTDIR)/opt/crusty/$(app)/doc/pdf/$x.pdf   : doc/$x.emf
 	groff -Tps -man $< > $(Tmp)/$x.ps
 	pstopdf $(Tmp)/$x.ps
 	cp $(Tmp)/$x.pdf $@
-	
+
 # 
 # ---------------------------------------------
 # emacs
