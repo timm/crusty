@@ -8,8 +8,8 @@ VimOutliner = 0.3.4
 CRUSTY_SVN=https://crusty.googlecode.com/svn/
 
 Dirs    = opt opt/crusty svns tmp tmp/backup var var/log .crusty \
-          bin doc doc/wiki doc/man doc/pdf doc/html    etc etc/login lib share 
-AptDirs = bin doc doc/wiki doc/man doc/pdf doc/html eg etc etc/login lib share 
+          bin doc doc/wiki doc/man doc/html    etc etc/login lib share 
+AptDirs = bin doc doc/wiki doc/man doc/html eg etc etc/login lib share 
 
 VimColors = .vim/colors
 VimDirs   = .vim .vim/plugin $(VimColors)
@@ -134,17 +134,12 @@ bashdocs : doc/sandbox.emf
 # documents
 
 doco : 	$(DESTDIR)/opt/crusty/$(app)/doc/man/$x.man \
-		$(DESTDIR)/opt/crusty/$(app)/doc/html/$x.html \
-		$(DESTDIR)/opt/crusty/$(app)/doc/pdf/$x.pdf 
+		$(DESTDIR)/opt/crusty/$(app)/doc/html/$x.html
 
 $(DESTDIR)/opt/crusty/$(app)/doc/man/$x.man   : doc/$x.emf 
 	groff -Tascii -man $< > $@
 $(DESTDIR)/opt/crusty/$(app)/doc/html/$x.html : doc/$x.emf  
 	groff -Thtml -man $< > $@
-$(DESTDIR)/opt/crusty/$(app)/doc/pdf/$x.pdf   : doc/$x.emf 
-	groff -Tps -man $< > $(Tmp)/$x.ps
-	pstopdf $(Tmp)/$x.ps
-	cp $(Tmp)/$x.pdf $@
 
 # 
 # ---------------------------------------------
