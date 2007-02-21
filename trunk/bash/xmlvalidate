@@ -1,0 +1,47 @@
+#!/usr/bin/env python2.2
+
+'''
+usage: xmlvalidate.py XMLFILE DTDFILE
+
+This simple Python script validates an XML file against an external
+DTD. It is specifically geared to run on Dreamhost\'s lame shell account,
+which is why it explicitly specifies python2.2 - they don\'t have the
+xmlproc libs installed for their own default Python version.
+
+App is silent and returns 0 on successful validation. It spits error
+messages to stderr and returns non-zero on failed validation.
+
+2007-02-20  David A. Riggs <driggs@mix.wvu.edu>
+
+Inspiration: http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/220472
+'''
+
+from xml.parsers.xmlproc import xmlproc
+from xml.parsers.xmlproc import xmlval
+from xml.parsers.xmlproc import xmldtd
+
+
+def validate_xml(xml_file, dtd_file):
+    """Validate XML file against an external DTD."""
+    dtd = xmldtd.load_dtd(dtd_file)
+    parser = xmlproc.XMLProcessor()
+    # ValidatingApp calls sys.exit on failed validation, beware!
+    parser.set_application(xmlval.ValidatingApp(dtd, parser))
+    parser.dtd = dtd
+    parser.ent = dtd
+    # do it!
+    parser.parse_resource(xml_file)
+
+
+if __name__ == '__main__':
+    import sys
+    
+    if len(sys.argv) != 3:
+        from os.path import basename
+        print >> sys.stderr, 'usage: %s XMLFILE DTDFILE' % (basename(sys.argv[0]))
+        sys.exit(2)
+
+    xml_file = sys.argv[1]
+    dtd_file = sys.argv[2]
+    validate_xml(xml_file, dtd_file)
+        
