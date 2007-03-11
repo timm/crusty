@@ -1,8 +1,11 @@
 BIN     = /bin/sh
 DESTDIR = $(HOME)
-Tmp     = ~/tmp/foo
+Tmp     = ~/tmp
  
 Snownews = 1.5.7
+Xgawk    = 3.1.5-beta.20060401
+XgawkLib = list math misc os string trees
+
 VimOutliner = 0.3.4
 
 CRUSTY_SVN=https://crusty.googlecode.com/svn/
@@ -22,7 +25,7 @@ install : hello installdirs apps bash editors screen done
 
 editors : nano vim emacs
 
-apps : crusty svns installsnownews 
+apps : crusty svns installsnownews  xgawk installmyawk
 
 showapps :
 	tree -L 1 $(DESTDIR)/opt 
@@ -31,7 +34,7 @@ hello : doc/hello.txt
 	@cat doc/hello.txt
 
 installdirs :
-	if [ ! -d "$(Tmp)" ]; then mkdir -p $(Tmp); fi
+	@if [ ! -d "$(Tmp)" ]; then mkdir -p $(Tmp); fi
 	@$(foreach x, $(Dirs),  if [ ! -d "$(DESTDIR)/$x" ]; then mkdir -p $(DESTDIR)/$x; fi; )
 
 dist :
@@ -89,9 +92,10 @@ svns :
 # application #3: snownews
 #    a net text-base rss reader
 
-snownews : rss-snownews/snownews-$(Snownews).tar.gz 
-	echo "=== $(Tmp) ==="
-	make name=snownews application 
+snownews : 
+	@make  name=snownews application $(DESTDIR)/opt/crusty/snownews/bin/snownews -s 
+
+$(DESTDIR)/opt/crusty/snownews/bin/snownews : rss-snownews/snownews-$(Snownews).tar.gz 
 	if [ ! -d $(Tmp)/snownews ]; then mkdir $(Tmp)/snownews; fi; 
 	cp rss-snownews/snownews-$(Snownews).tar.gz $(Tmp)/snownews;
 	cd $(Tmp)/snownews;  tar xfz snownews-$(Snownews).tar.gz ; 
@@ -99,12 +103,28 @@ snownews : rss-snownews/snownews-$(Snownews).tar.gz
 		./configure --prefix=$(DESTDIR)/opt/crusty/snownews ;  \
 		make
 
-
 installsnownews : snownews
 	make name=snownews application 
 	cd $(Tmp)/snownews/snownews-$(Snownews) ; \
 		make install
 
+# ---------------------------------------------
+# application #4: xgawk
+#    a better gawk (with xml support)
+
+xgawk :  
+	make name=xgawk application -s
+	make $(DESTDIR)/opt/crusty/xgawk/bin/xgawk
+
+$(DESTDIR)/opt/crusty/xgawk/bin/xgawk : xml-gawk/xgawk-$(Xgawk).tar.gz
+	if [ ! -d $(Tmp)/xgawk ]; then mkdir $(Tmp)/xgawk; fi; 
+	cp xml-gawk/xgawk-$(Xgawk).tar.gz $(Tmp)/xgawk;
+	cd $(Tmp)/xgawk;  tar xfz xgawk-$(Xgawk).tar.gz 
+	cd $(Tmp)/xgawk/xgawk-$(Xgawk); \
+		./configure --prefix=$(DESTDIR)/opt/crusty/xgawk ;  \
+		make ;\
+		make install
+ 
 # ---------------------------------------------
 # bash
 
@@ -203,6 +223,38 @@ screen : $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc
 
 $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc  : etc/dotscreenrc
 	@cp -v $< $@	
+
+# ---------------------------------------------
+# myawk
+
+myawk : xgawk requirez-install 
+
+requirez-install : 
+	make name=requirez application requirez-support
+	@$(foreach t, $(XgawkLib), \
+		if   [ ! -d $(DESTDIR)/opt/crusty/requirez/lib/$t ]; \
+        then mkdir  $(DESTDIR)/opt/crusty/requirez/lib/$t  ; \
+        fi ; \
+		make d=$(DESTDIR)/opt/crusty/requirez/lib t=$t requirez-lib; )
+
+requirez-lib :
+	@cd requirez/lib/$t ; \
+		$(foreach f, $(notdir $(wildcard requirez/lib/$t/*.awk)),  \
+				if [ $f -nt $d/$t/$f ]; then cp -v $f $d/$t/$f;  fi; )
+
+requirez-support: \
+	$(DESTDIR)/opt/crusty/requirez/lib/includes.m4      \
+	$(DESTDIR)/opt/crusty/requirez/etc/login/dotrequirez \
+	$(DESTDIR)/opt/crusty/requirez/bin/requirez 
+	@echo "export Requirez=$(DESTDIR)/opt/crusty/requirez" > $(DESTDIR)/opt/crusty/requirez/etc/login/0
+
+$(DESTDIR)/opt/crusty/requirez/lib/includes.m4        : requirez/includes.m4 ;  @cp -v $< $@	
+$(DESTDIR)/opt/crusty/requirez/etc/login/dotrequirez  : requirez/dotrequirez ;  @cp -v $< $@	
+$(DESTDIR)/opt/crusty/requirez/bin/requirez           : requirez/requirez    
+	echo "#!`which bash`" > $@ 
+	cat  $< >> $@
+	chmod +x $@
+
 # ---------------------------------------------
 # done
 done : showapps doc/done.txt

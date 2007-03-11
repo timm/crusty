@@ -1,0 +1,5 @@
+BEGIN {
+	Cheader  = "=";
+	Cnothing = "?";
+	Ccomment = "%";
+}
