@@ -1,0 +1,10 @@
+#requirez(array.awk)
+#requirez(normal.awk)
+
+BEGIN {
+	print Seed
+	srand(Seed);
+	for(i=1;i<=10;i++)
+		print normal(10,2)
+}
+
