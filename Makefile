@@ -25,7 +25,7 @@ install : hello installdirs apps bash editors screen done
 
 editors : nano vim emacs
 
-apps : crusty svns installsnownews  xgawk installmyawk
+apps : crusty svns installsnownews  xgawk myawk
 
 showapps :
 	tree -L 1 $(DESTDIR)/opt 
@@ -227,8 +227,7 @@ $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc  : etc/dotscreenrc
 # ---------------------------------------------
 # myawk
 
-myawk : xgawk requirez-install 
-
+myawk : xgawk requirez-install requirez-support
 requirez-install : 
 	make name=requirez application requirez-support
 	@$(foreach t, $(XgawkLib), \
