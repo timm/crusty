@@ -1,5 +1,7 @@
 #summary GNU make is not enough
 
+(sung to the tunes of Garbage's "The World Is Not Enough")
+
 GNU Make is not enough  
 
 I know how to ant  
