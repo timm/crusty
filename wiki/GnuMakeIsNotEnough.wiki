@@ -2,6 +2,8 @@
 
 (sung to the tunes of Garbage's "The World Is Not Enough")
 
+(see also http://freshmeat.net/articles/view/1702/ and http://freshmeat.net/articles/view/1715/ )
+
 GNU Make is not enough  
 
 I know how to ant  
