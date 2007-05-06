@@ -227,7 +227,8 @@ $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc  : etc/dotscreenrc
 # ---------------------------------------------
 # myawk
 
-myawk : xgawk needz-install needz-support
+needz : myawk
+myawk : xgawk needz-install needz-support needz-apps
 needz-install : 
 	make name=needz application needz-support
 	@$(foreach t, $(XgawkLib), \
@@ -245,14 +246,24 @@ needz-support: \
 	$(DESTDIR)/opt/crusty/needz/lib/includes.m4      \
 	$(DESTDIR)/opt/crusty/needz/etc/login/dotneedz \
 	$(DESTDIR)/opt/crusty/needz/bin/needz 
-	@echo "export needz=$(DESTDIR)/opt/crusty/needz" > $(DESTDIR)/opt/crusty/needz/etc/login/0
+	@echo "export Needz=$(DESTDIR)/opt/crusty/needz" > $(DESTDIR)/opt/crusty/needz/etc/login/0
 
-$(DESTDIR)/opt/crusty/needz/lib/includes.m4        : needz/includes.m4 ;  @cp -v $< $@	
+$(DESTDIR)/opt/crusty/needz/lib/includes.m4     : needz/includes.m4 ;  @cp -v $< $@	
 $(DESTDIR)/opt/crusty/needz/etc/login/dotneedz  : needz/dotneedz ;  @cp -v $< $@	
 $(DESTDIR)/opt/crusty/needz/bin/needz           : needz/needz    
 	echo "#!`which bash`" > $@ 
 	cat  $< >> $@
 	chmod +x $@
+
+needz-apps: needz-bars needz-malign
+
+needz-bars :
+	@cd needz-apps/bars && needz bars
+	@cd needz-apps/bars/eg && chmod +x 0 1 2 3 4 5
+
+needz-malign :
+	@cd needz-apps/malign && needz malign
+	@cd needz-apps/malign/eg && chmod +x 0 1 2 
 
 # ---------------------------------------------
 # done

@@ -7,11 +7,11 @@ uniques() {
 	     END              { print Out }'
 }
 
-for i in $Requirez/lib/* ; do
+for i in $Needz/lib/* ; do
 	 AWKPATH="${AWKPATH}:$i"
 done
 
-AWKPATH=`uniques $AWKPATH:$Requirez/lib`
+AWKPATH=`uniques $AWKPATH:$Needz/lib`
 
 export M4PATH="$AWKPATH"
 export AWKPATH="$AWKPATH"

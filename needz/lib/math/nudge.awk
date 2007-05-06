@@ -2,6 +2,7 @@
 #needz(ranges)
 #needz(globals)
 
+
  function gaussian(m,std,nudgep,old,nudge,   delta,up,down,got,retries) {
  	if (nudgep) {
  		delta = normal(1,nudge);
