@@ -1,0 +1,4 @@
+./0
+
+ls -l | gawk '{print $5}' | bars -t 1 -w 100 -s
+

@@ -1,0 +1,2 @@
+(cd ../../.. && make -s needz)
+(cd ..       && needz bars)
