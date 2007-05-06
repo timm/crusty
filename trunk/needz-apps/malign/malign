@@ -1,0 +1,8 @@
+# needz(str.awk)
+# needz(trim.awk)
+# needz(ranges.awk)
+# needz(about.awk)
+
+BEGIN {defaults(); getOpts(How); }
+
+# needz(malign.awk)

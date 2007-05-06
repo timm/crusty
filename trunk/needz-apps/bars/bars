@@ -1,0 +1,6 @@
+# needz(ranges.awk)
+# needz(hist.awk)
+# needz(str.awk)
+# needz(about.awk)
+
+BEGIN {defaults(); getOpts(How) ; }

@@ -1,0 +1,16 @@
+bars : show column data as histograms
+Copyright 2006 Tim Menzies
+Usage: bars [FLAGS] FILE
+        
+FILE is columns of data.
+        
+        -b NUM    width of bars; default=[20]
+        -c        show copyright
+        -d CHAR   field seperator
+        -h        show help
+        -k NUM    width of 'key' column;default=[4]
+        -m CHAR   character to draw one histogram dot; default=[*]
+        -n        no sorting of keys
+        -t NUM    target column; default=[2]
+        -v NUM    width of 'value' column; default=[3]
+        -w NUM    width of each data bin; default=[10]

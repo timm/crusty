@@ -1,0 +1,4 @@
+./0
+
+cat 2.in
+malign  -w 4 -o : -g 2 2.in

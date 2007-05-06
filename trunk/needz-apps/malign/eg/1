@@ -1,0 +1,3 @@
+./0
+
+echo "" | $Audit ~/opt/crusty/needz/bin/malign

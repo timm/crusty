@@ -1,0 +1,6 @@
+./0
+
+$Audit ~/opt/crusty/needz/bin/bars  -t 1 -k 10 -w 1000000 3.in 2> ~/tmp/awklint.out
+
+cd ~/tmp
+pr -n -F -o 5 awklint.out awkvars.out awkprof.out | less
