@@ -18,5 +18,5 @@ function about(who,what,when,why) {
     print what " : " why;
     print "Copyright " when " " who ;
 }
-#requirez(prints.awk)
+#needz(prints.awk)
 

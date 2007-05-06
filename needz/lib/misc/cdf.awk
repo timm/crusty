@@ -1,4 +1,4 @@
-# requirez(str.awk)
+# needz(str.awk)
  BEGIN {CONVFMT=OFMT="%-20.20g"}
  function cdfs(i,all,unique,cdf,\
 		       j,jmax,k,l,sum,some,emos,new,cumm) {

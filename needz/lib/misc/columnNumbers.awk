@@ -1,4 +1,4 @@
-# requirez(bad.awk)
+# needz(bad.awk)
 function columnNumbers(str,nums,max, sep,  tmp,i,j,n) {
 	sep = sep ? sep : ",";
 	n=split(str,tmp,sep);

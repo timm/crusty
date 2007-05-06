@@ -1,5 +1,5 @@
-#requirez(bad.awk)
-#requirez(trim.awk)
+#needz(bad.awk)
+#needz(trim.awk)
 
 function table(arr,header,body,   \
 		names,rows,\
