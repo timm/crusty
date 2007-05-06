@@ -1,17 +1,17 @@
 # /* vim filetype=sh : */ # -*- sh -*-
 
 if [ -z "$1" ]
-then echo "requirez: no arguments"
+then echo "needz: no arguments"
      exit
 fi
 
 if [ ! -f "$1" ]
-then echo "requirez: $f not a file"
+then echo "needz: $f not a file"
      exit
 fi
 
 In=${In=$1}
-Out=${Out=$Requirez/bin/$In}
+Out=${Out=$needz/bin/$In}
 #---------------------------------------------------------------
 header() {   
 cat<<EOF 
@@ -20,10 +20,10 @@ cat<<EOF
 #
 # ----| $1 |--------------------------------------
 #
-#   _ _ _ _ _                                    ((
-#  |=|=|=|=|=|.----------------------------.    _))_
-#  |-|-|-|-|-||  a 'requirez' code bundle  | ___\__/)_
-#  |_|_|_|_|_|'----------------------------'|_||_~~_|_|
+#   _ _ _ _ _                          ((
+#  |=|=|=|=|=|.------------------.    _))_
+#  |-|-|-|-|-|| all your 'needz' | ___\__/)_
+#  |_|_|_|_|_|'------------------. |_|_~~_|_|
 #
 # Built by "$USER" on `date`.
 #
@@ -46,7 +46,7 @@ EOF
 
 #---------------------------------------------------------------
 my_m4() {
-	m4 -P $Requirez/lib/includes.m4 $1; 
+	m4 -P $needz/lib/includes.m4 $1; 
 }
 #---------------------------------------------------------------
 
@@ -54,4 +54,3 @@ my_m4() {
 ( header $1; my_m4 $In ) > $Out
 chmod +x $Out
 chmod -w $Out
-ls $Out

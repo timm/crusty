@@ -1,3 +1,4 @@
 (cd ../.. && make myawk)
 f=`needz demo1`
+echo $f
 $f -v Seed=$RANDOM
