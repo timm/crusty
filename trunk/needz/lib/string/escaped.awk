@@ -1,4 +1,4 @@
-# requirez(string2self)
+# needz(string2self)
 
  BEGIN {
  	string2self(Escaped,"* $ ^ . ?"," ");

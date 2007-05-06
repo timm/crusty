@@ -227,29 +227,29 @@ $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc  : etc/dotscreenrc
 # ---------------------------------------------
 # myawk
 
-myawk : xgawk requirez-install requirez-support
-requirez-install : 
-	make name=requirez application requirez-support
+myawk : xgawk needz-install needz-support
+needz-install : 
+	make name=needz application needz-support
 	@$(foreach t, $(XgawkLib), \
-		if   [ ! -d $(DESTDIR)/opt/crusty/requirez/lib/$t ]; \
-        then mkdir  $(DESTDIR)/opt/crusty/requirez/lib/$t  ; \
+		if   [ ! -d $(DESTDIR)/opt/crusty/needz/lib/$t ]; \
+        then mkdir  $(DESTDIR)/opt/crusty/needz/lib/$t  ; \
         fi ; \
-		make d=$(DESTDIR)/opt/crusty/requirez/lib t=$t requirez-lib; )
+		make d=$(DESTDIR)/opt/crusty/needz/lib t=$t needz-lib; )
 
-requirez-lib :
-	@cd requirez/lib/$t ; \
-		$(foreach f, $(notdir $(wildcard requirez/lib/$t/*.awk)),  \
+needz-lib :
+	@cd needz/lib/$t ; \
+		$(foreach f, $(notdir $(wildcard needz/lib/$t/*.awk)),  \
 				if [ $f -nt $d/$t/$f ]; then cp -v $f $d/$t/$f;  fi; )
 
-requirez-support: \
-	$(DESTDIR)/opt/crusty/requirez/lib/includes.m4      \
-	$(DESTDIR)/opt/crusty/requirez/etc/login/dotrequirez \
-	$(DESTDIR)/opt/crusty/requirez/bin/requirez 
-	@echo "export Requirez=$(DESTDIR)/opt/crusty/requirez" > $(DESTDIR)/opt/crusty/requirez/etc/login/0
+needz-support: \
+	$(DESTDIR)/opt/crusty/needz/lib/includes.m4      \
+	$(DESTDIR)/opt/crusty/needz/etc/login/dotneedz \
+	$(DESTDIR)/opt/crusty/needz/bin/needz 
+	@echo "export needz=$(DESTDIR)/opt/crusty/needz" > $(DESTDIR)/opt/crusty/needz/etc/login/0
 
-$(DESTDIR)/opt/crusty/requirez/lib/includes.m4        : requirez/includes.m4 ;  @cp -v $< $@	
-$(DESTDIR)/opt/crusty/requirez/etc/login/dotrequirez  : requirez/dotrequirez ;  @cp -v $< $@	
-$(DESTDIR)/opt/crusty/requirez/bin/requirez           : requirez/requirez    
+$(DESTDIR)/opt/crusty/needz/lib/includes.m4        : needz/includes.m4 ;  @cp -v $< $@	
+$(DESTDIR)/opt/crusty/needz/etc/login/dotneedz  : needz/dotneedz ;  @cp -v $< $@	
+$(DESTDIR)/opt/crusty/needz/bin/needz           : needz/needz    
 	echo "#!`which bash`" > $@ 
 	cat  $< >> $@
 	chmod +x $@

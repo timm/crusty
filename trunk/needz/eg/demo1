@@ -1,5 +1,5 @@
-#requirez(array.awk)
-#requirez(normal.awk)
+#needz(array.awk)
+#needz(normal.awk)
 
 BEGIN {
 	print Seed

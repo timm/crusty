@@ -1,6 +1,6 @@
-#requirez(normal)
-#requirez(ranges)
-#requirez(globals)
+#needz(normal)
+#needz(ranges)
+#needz(globals)
 
  function gaussian(m,std,nudgep,old,nudge,   delta,up,down,got,retries) {
  	if (nudgep) {
