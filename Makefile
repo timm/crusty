@@ -25,7 +25,7 @@ install : hello installdirs apps bash editors screen done
 
 editors : nano vim emacs
 
-apps : crusty svns installsnownews  xgawk myawk
+apps : crusty svns installsnownews  bigfootnotes xgawk myawk
 
 showapps :
 	tree -L 1 $(DESTDIR)/opt 
@@ -124,7 +124,18 @@ $(DESTDIR)/opt/crusty/xgawk/bin/xgawk : xml-gawk/xgawk-$(Xgawk).tar.gz
 		./configure --prefix=$(DESTDIR)/opt/crusty/xgawk ;  \
 		make ;\
 		make install
- 
+
+# ---------------------------------------------
+# application #5: biggot
+#	a simple tool for doing web-based lectures
+
+bigfootnotes :  
+	make name=bigfoot application -s
+	make $(DESTDIR)/opt/crusty/bigfoot/doc/bigfoot.pdf
+
+$(DESTDIR)/opt/crusty/bigfoot/doc/bigfoot.pdf : bigfoot/doc/bigfoot.man
+	groff -Tps    -man $< | pstopdf -i -o $@
+
 # ---------------------------------------------
 # bash
 
