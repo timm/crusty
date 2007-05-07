@@ -1,0 +1,134 @@
+
+
+body , p  {
+	margin:5;
+	padding:5;
+	font-size: small;
+	font-family:lucida grande, verdana, arial, times, georgia, sans-serif;
+       background: white;  
+}
+
+span.it:hover {background-color: #CCC; }
+div.refs {
+	margin-top: 1000px;
+	padding-top: 1000px;
+	margin-bottom: 1000px;
+	padding-bottom: 1000px;
+	}
+div.refs  ol {
+	padding-bottom: 1000px;
+	margin-bottom: 1000px;
+	padding-top: 1000px;
+	margin-top: 1000px;
+	}
+
+
+div.refs pre {
+	font-size: medium;
+	}
+div.refs  li {
+	margin-top: 50px;
+	padding-top: 50px;
+	padding-bottom: 1000px;
+	margin-bottom: 1000px;
+	}
+div.refs  ol {
+	padding-bottom: 1000px;
+	margin-bottom: 1000px;
+	padding-top: 1000px;
+	margin-top: 1000px;
+	}
+div.body A:hover   {cursor: crosshair; color: #C0FFC0; background-color: lightslategray; text-decoration: none}
+
+h1.header { text-align: center; font-size: large; }
+
+h1 { font-size: medium ;  background-color: #446688;  color: white; }
+h2 { font-size: medium; }
+
+
+img.left {
+	float:left;
+	padding:3px;
+	margin-right:6px;
+	border:1px solid #c4c4c4;
+}
+
+img.right {
+	float:right;
+	padding:3px;
+	margin-right:6px;
+	border:1px solid #c4c4c4;
+}
+
+
+#wrapper {
+	height:100%;
+	margin:auto;
+	width:90%;
+}
+/************************ LEFT SIDE COLUMN *****************/
+#left {
+	float:left;
+	padding:10px;
+	width:22%;
+	}
+	
+#left h1, #right h1 {
+	font-size:15px;
+	padding-top:5px;
+	font-family:helvetica, arial, georgia, times, sans-serif;
+	border-bottom:1px dotted #c4c4c4;
+}
+	
+/************************** MAIN CONTENT IN MIDDLE ******************/
+
+#middle {
+	float:left;
+	width:46%;
+	line-height:1.01em;
+	padding-left:3.5%;
+	padding-right:3.5%;
+}
+
+#middle h1 {
+	font-family:"Century Gothic", verdana, arial, times, sans-serif;
+	font-size:21px;
+	font-weight:normal;
+	border-bottom:1px solid #c4c4c4;
+	padding-bottom:3px;
+	margin-top:24px;
+}
+/***************************  RIGHT COLUMN  *********************/
+#right {
+	float:left;
+	padding-top:10px;
+	font-size:11px;
+	width:22%;
+	line-height:1.6em;
+}
+
+#right a {
+	line-height:2em;
+	
+}
+
+#right br {
+	line-height:0.7em;
+}
+/********************************************    FOOTER  *****************/
+#footer {
+	border-top:1px solid #c4c4c4;
+	padding-top:5px;
+	text-align:center;
+	width:90%;
+	margin:0 auto;
+	clear:both;
+}
+
+.footer {
+	margin-top:-2px;
+}	
+div.body img {
+  padding:4px;
+  border:1px solid #446688;
+  }
