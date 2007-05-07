@@ -18,23 +18,35 @@
 bigfoot
 .SH DESCRIPTION
 .P
-.I Bigfoot 
+.I BigFoot 
 is a PHP application that supports the rapid
-writing and renderring of web-based lecture notes
+writing and rendering of web-based lecture notes
 with auto-numbered
 footnotes.
 A web page is rendered in a two column frame- text to the left and 
-footnotes to the right.
+footnotes to the right:
+.cB
+ .-----.-------.
+ |     |       |
+ | lhs | rhs   |
+ |     |       |
+ .-----.-------.     
+.cE
+.P
+Note that the rhs frame is larger than the lhs. This larger frame is used
+to switch between displaying multiple big things, while keeping the lhs frame (mostly) constant.
 A 
 .I screen
 style sheet adds large amounts of white space before and after each footnote- so clicking
 on a link to a footnote shows one, and only one, footnote in the right hand side frame.
-The footnotes can hence be quite large; e.g. a large pdf showing graphs of experimental
-results.
-A second
+Students can then focus on one footnote at a time (in the rhs frame) while the lhs frame
+offers a flow through numerous topics. 
+.P
+Students can print all the text and footnotes by printing either frame
+(a second
 .I print
 style sheet does not add white space around the footnotes so
-the lectures can be quickly printed.
+the printed notes aren't excessively long).
 .SH MOTIVATION
 The authoring environments for 
 content management systems, wikis, blogging software,
@@ -43,36 +55,24 @@ are clumsy-
 at least for  creating long complex technical descriptions.
 For example, in WordPress or Moodle or various wikis, it is all to easy 
 to update the wrong window, then lose all your changes.
-
 Hence, in
-.I Bigfoot,
+.I BigFoot,
 content is written in a text editor (e.g. EMACS) and saved to a PHP file.
-The file is showm in a two-frame
-html page with the top-of-page shown on the left, and the top-of-footnotes
-shown on the right.
-.cB
- .-----.-----.
- |     |     |
- | lhs | rhs |
- |     |     |
- .-----.-----.     
-.cE
-Students can print all the text and footnotes by printing either frame.
 .SH INSTALLATION
-1. Copy an existing 
-.I BigFoot
-website to a web-accessible directory;
+Download
+.I http://unbox.org/dust/tags/bigfoot/1.0/bigfoot.zip
+and unzip it to an empty, web-readable
+directory. 
 
-2. Add your title into \fCindex.html\fR in the
+Add your title into \fCindex.html\fR in the
 \fC<title>\fR tag.
 
-3. Edit the header of \fCtext.php\fR after the following example.
-
+Edit the header of \fCtext.php\fR after the following example.
 .cB
 // top of file
 <?
 include("notes.inc");
-note0("<img align=center src=img/bugs.jpg>"); // define an openning graphic
+note0("<img align=center src=img/bugs.jpg>"); // define an opening graphic
 head("Learning Better IV&V Practices",        // title
        "Tim Menzies",                         // author
        "Lane Dept.  Com. Sci. & Elec.  Eng.", // organization
@@ -91,75 +91,75 @@ in the standard PHP manner; i.e.
 <? function(arg1,arg2,...); ?>
 .cE
 .P
-.IP \fInote0(imageFile)\fR
-The above example shows how to use this function.
-Should be called once, and only once, at start of file.
-.IP "\fInote(textString, footnoteString)\fR"
-Use the alternate system wide
-.I config-file
-instead of
-.IR /etc/foo.conf .
-This overrides any
-.B FOOCONF
-environment variable.
-.IP -a
-In addition to the baz segments, also parse the
-blurfl headers.
-.IP -r
-Recursive mode. Operates as fast as lightning
-at the expense of a megabyte of virtual memory.
-
-
-.B index.html
-defines the two frames, and the title.
- 
-frobnicates the bar library by tweaking internal
-symbol tables. By default it parses all baz segments
-and rearranges them in reverse order by time for the
-.BR xyzzy (1)
-linker to find them. The symdef entry is then compressed
-using the WBG (Whiz-Bang-Gizmo) algorithm.
-All files are processed in the order specified.
+The following functions should be called only once.
 .P
-.SH OPTIONS
+.I head(title, author, org, email, url, year, date, notes);
+.RS
+Defines the header. Must be called before \fIneck()\fR
+.RE
+.I note0(imageFile);
+.RS
+Should be called once, and only once, at start of file.
+.RE
+.I neck();
+.RS
+This must be called after all the page one material- see the example in the download file.
+.RE
+.I toes();
+.RS
+This must be called on the last line of the \fItext.php\fR file.
+.RE
+.P
+The following functions can be called any number of times
+.P
+.I note(textString, footnoteString);
+.RS
+Presents \fItextString\fR on the lhs frame and generated a footnote from \fIfootnoteString\fR.
+Returns the number of the new footnote so the idiom \fI$number=note("txt","footnote")\fR
+stores the footnote number for later use.
+.RE
+.I ref($number);
+.RS
+Adds a link to a previously defined footnote.
+.RE
 .SH FILES
-.I /etc/foo.conf
+.I index.html
 .RS
-The system wide configuration file. See
-.BR foo (5)
-for further details.
+Defines the frame sizes.
 .RE
-.I ~/.foorc
+.I text.php
 .RS
-Per user configuration file. See
-.BR foo (5)
-for further details.
-.SH ENVIRONMENT
-.IP FOOCONF
-If non-null the full pathname for an alternate system wide
-.IR foo.conf .
-Overridden by the
-.B -c
-option.
-.SH DIAGNOSTICS
-The following diagnostics may be issued on stderr:
- 
-Bad magic number.
-.RS
-The input file does not look like an archive file.
+Defines the content of the talk.
 .RE
-Old style baz segments.
+.I bigfoot.inc
 .RS
-.B foo
-can only handle new style baz segments. COBOL
-object libraries are not supported in this version.
+Stores the PHP code for 
+.I BigFoot.
+.RE
+.I img/print.css
+.RS
+Defines the print styles. Note that a page break is added before each \fI<H1>\fR entry.
+.RE
+.I img/screen.css
+.RS
+Defines the on-screen styles. 
+Adds large amounts of white space around each footnote so, when shown in the rhs frame, it seems to be a stand alone image.
+.RE
 .SH BUGS
-The command name should have been chosen more carefully
-to reflect its purpose.
+None known, yet.
 .SH AUTHOR
 Tim Menzies <tim@menzies.us>
-.SH "SEE ALSO"
-.BR bar (1),
-.BR foo (5),
-.BR xyzzy (1)
+.SH COPYRIGHT
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; version 2.
 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc.,51 Franklin Street, Fifth Floor, Boston, 
+MA 02110-1301, USA.
