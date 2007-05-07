@@ -49,14 +49,15 @@ Change the title
 
 <h1>New page</h1>
 
+
+<p>You can include <? $eg1=note("footnotes","on any content"); ?>.
+
 <p>Here's a quick way to include <? img("an image","bigfoot01_001.sized.jpg"); ?>
+<p>
+The footnotes are <? note("auto-numbers ","<img src=img/bones.jpg>"); ?>  
+ for ease of <? note("reference","<img src=img/ray_robillard_bigfoot.jpg>"); ?>.
 
-<p>And you can include <? $eg1=note("footnotes","on any content"); ?>.
-
-<p>The footnotes are <? note("auto-numbers","<img src=img/bones.jpg>"); ?>
-for ease of <? note("reference","<img src=img/ray-robillard_bigfoot.jpg"); ?>.
-
-<h1>Newer new page</h1>
+<h1>Newer newer page</h1>
 
 <p> You can even refer back to past <? ref($eg1); ?> footnotes.
 
