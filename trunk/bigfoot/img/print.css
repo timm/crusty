@@ -1,0 +1,23 @@
+body { font-size: small;
+	font-family:lucida grande, verdana, arial, times, georgia, sans-serif;
+   background: white; font-size: 10pt; 
+   margin: 0;
+  padding: 10px;
+  border-left: 2px solid #446688;
+  
+} 
+
+
+h2, h3, h4, h5, h6 { page-break-after: avoid; page-break-inside: avoid} 
+blockquote, table, pre { page-break-inside: avoid} 
+ul, ol, dl { page-break-before: avoid} 
+img li { page-break-inside: avoid; page-break-after: avoid}
+div.body h1 {page-break-before: always;}
+div.refs h1 {page-break-before: always;}
+h1 { border-bottom: 2px solid #468; }
+
+
+div.body img {
+  padding:4px;
+  border:1px solid #446688;
+  }
