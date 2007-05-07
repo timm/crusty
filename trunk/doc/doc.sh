@@ -1,12 +1,11 @@
 main() {
 	case $1 in
-		contents) 	contents ;;
-		ascii) 		contents | groff -Tascii -man  ;;
-		less) 		contents | groff -Tascii -man | less ;;
-		html)  		contents | groff -Thtml -man  > $HOME/tmp/eg.html ;;
-		ps)    		contents | groff -Tps   -man  > $HOME/tmp/eg.ps; 
-					pstopdf $HOME/tmp/eg.ps ;;
-		*)	   		echo "unknown option: $1"
+		contents) contents ;;
+		ascii)    contents | groff -Tascii -man  ;;
+		less)     contents | groff -Tascii -man | less ;;
+		html)     contents | groff -Thtml  -man > $HOME/tmp/eg.html           ; echo $HOME/tmp/eg.html >&2 ;;
+		pdf)      contents | groff -Tps    -man | pstopdf -i -o $HOME/tmp/eg.pdf ; echo $HOME/tmp/eg.pdf  >&2 ;; 
+		*)        echo "unknown option: $1"
 	esac
 }
 # NAME           Name section, the name of the function or command.
