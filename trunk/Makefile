@@ -23,12 +23,17 @@ all: snownews
 
 install : hello installdirs apps bash editors screen done
 
+csee : hello installdirs appscsee bash editors screen done
+
+appscsee : crusty svns xgawk myawk
+
 editors : nano vim emacs
 
 apps : crusty svns installsnownews  bigfootnotes xgawk myawk
 
 showapps :
-	tree -L 1 $(DESTDIR)/opt 
+	cd $(DESTDIR)/opt
+	find . -type d | sed -e 1d -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|-/'	
 
 hello : doc/hello.txt
 	@cat doc/hello.txt
@@ -126,7 +131,7 @@ $(DESTDIR)/opt/crusty/xgawk/bin/xgawk : xml-gawk/xgawk-$(Xgawk).tar.gz
 		make install
 
 # ---------------------------------------------
-# application #5: biggot
+# application #5: bigfoot
 #	a simple tool for doing web-based lectures
 
 bigfootnotes :  
@@ -239,7 +244,10 @@ $(DESTDIR)/opt/crusty/crusty/etc/dotscreenrc  : etc/dotscreenrc
 # myawk
 
 needz : myawk
-myawk : xgawk needz-install needz-support needz-apps
+myawk : xgawk needz-install needz-support 
+
+#needz-apps
+
 needz-install : 
 	make name=needz application needz-support
 	@$(foreach t, $(XgawkLib), \
